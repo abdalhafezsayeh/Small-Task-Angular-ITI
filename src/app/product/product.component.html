@@ -1,0 +1,30 @@
+
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-3" *ngFor="let item of list">
+            <div class="test">
+                <div class="card">
+                    <img class="card-img-top image_test" src="{{item.image}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title bg-dark text-light p-2">{{item.name}}</h5>
+                      <span class="p-1">Id Is : <strong> {{item.id}}</strong></span>
+                      <span class="p-1 mx-2">Quantity Is : <strong>{{item.Quantity}}</strong></span>
+                      <span class="d-lg-block pt-2 p-1">Price The Proudect : <strong>${{item.Price}}</strong></span>
+                      <p class="card-text p-2 dis">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+    
+        </div>
+    
+    
+    </div>
+
+</div>
+
+
+
