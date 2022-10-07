@@ -7,6 +7,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { ProductComponent } from './product/product.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ShadowDirective } from './Directive/shadow.directive';
+import { ConvertIdNumberPipe } from './pipes/convert-id-number.pipe';
+import { FormatNumberPipe } from './pipes/format-number.pipe';
 
 @NgModule({
   declarations: [
@@ -14,11 +20,18 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     MainComponent,
     ProductComponent,
-    FooterComponent
+    FooterComponent,
+    LoginUserComponent,
+    ShadowDirective,
+    ConvertIdNumberPipe,
+    FormatNumberPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

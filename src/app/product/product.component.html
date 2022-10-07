@@ -1,27 +1,48 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="mb-5 w-25">
+        <label for="" class="form-label">Proudects</label>
+        <select class="form-select form-select-lg" [(ngModel)]="showw">
+            <option *ngFor="let cat of category" [value]="cat.id" selected>{{cat.name}}</option>
+        </select>
+        <!-- <div class="bg-dark text-light text-center">{{showw}}</div> -->
+    </div>
 
 
-        <div class="col-3" *ngFor="let item of list">
-            <div class="test">
-                <div class="card">
-                    <img class="card-img-top image_test" src="{{item.image}}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title bg-dark text-light p-2">{{item.name}}</h5>
-                      <span class="p-1">Id Is : <strong> {{item.id}}</strong></span>
-                      <span class="p-1 mx-2">Quantity Is : <strong>{{item.Quantity}}</strong></span>
-                      <span class="d-lg-block pt-2 p-1">Price The Proudect : <strong>${{item.Price}}</strong></span>
-                      <p class="card-text p-2 dis">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row mt-5">
+
+        <ng-container *ngFor="let item of list; let i = index">
+        
+            <div class="col-3 mb-4"  *ngIf="showw == item.category">
+                <div class="test" Shadow>
+                    <!-- <div class="card" [style.background-color]="(item.Quantity == 1)?'yellow':'' || (item.Quantity == 0)?'red':''"> -->
+                    <div class="card" [ngClass]="{'bg-warning':item.Quantity == 1, 'bg-danger': item.Quantity == 0}">
+                        <img class="card-img-top image_test w-100" src="{{item.image}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title bg-dark text-light p-2">{{item.name}}</h5>
+                            <span class="p-1">Id Is : <strong> {{item.id}}</strong></span>
+                            <!-- <span class="p-1 mx-2">Quantity Is : <strong>{{item.Quantity}}</strong></span> -->
+                            <ng-container [ngSwitch]="item.Quantity">
+                                <span *ngSwitchCase="0">No Proudect</span>
+                                <span *ngSwitchCase="1">The Last Proudect</span>
+                                <span *ngSwitchDefault>Quantity Is : <strong>{{item.Quantity}}</strong></span>
+                            </ng-container>
+
+                            <span class="d-lg-block pt-2 p-1">Price The Proudect : <strong>${{item.Price}}</strong></span>
+                            <span class="d-block pb-2">Proudect Number : <strong>{{i + 1}}</strong></span>
+                            <button type="button" class="btn btn-primary" (click)="dec(item)">buy now</button>
+                        </div>
                     </div>
-                  </div>
+                </div>
+        
             </div>
-    
-        </div>
-    
-    
+        
+        </ng-container>
+
+        <!-- [class.d-none]="showw != item.category" -->
+        <!-- (click)="buy(item.id ,item.Quantity)" -->
+        
     </div>
 
 </div>
