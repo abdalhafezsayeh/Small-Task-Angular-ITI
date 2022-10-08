@@ -1,20 +1,22 @@
 
 <div class="container">
 
-    <div class="mb-5 w-25">
-        <label for="" class="form-label">Proudects</label>
-        <select class="form-select form-select-lg" [(ngModel)]="showw">
-            <option *ngFor="let cat of category" [value]="cat.id" selected>{{cat.name}}</option>
+    <!-- Start Select Option -->
+    <!-- <div class="mb-5 w-25">
+        <label for="" class="form-label">Chosse The Proudects</label>
+        <select class="form-select form-select-lg" [(ngModel)]="returnValueWithNgmodel" (change)="showWithFilter()">
+            <option *ngFor="let cat of category" [value]="cat.id">{{cat.name}}</option>
         </select>
-        <!-- <div class="bg-dark text-light text-center">{{showw}}</div> -->
-    </div>
+    </div> -->
 
 
+    <!-- Start Section Show Products -->
     <div class="row mt-5">
-
-        <ng-container *ngFor="let item of list; let i = index">
+        <!-- Use Element Conatiner Because It Does Not Appear In Dom -->
+        <ng-container *ngFor="let item of cloneListProduct; let i = index">
         
-            <div class="col-3 mb-4"  *ngIf="showw == item.category">
+            <!-- <div class="col-3 mb-4"  *ngIf="showw == item.category"> -->
+                <div class="col-3 mb-4">
                 <div class="test" Shadow>
                     <!-- <div class="card" [style.background-color]="(item.Quantity == 1)?'yellow':'' || (item.Quantity == 0)?'red':''"> -->
                     <div class="card" [ngClass]="{'bg-warning':item.Quantity == 1, 'bg-danger': item.Quantity == 0}">
@@ -40,8 +42,7 @@
         
         </ng-container>
 
-        <!-- [class.d-none]="showw != item.category" -->
-        <!-- (click)="buy(item.id ,item.Quantity)" -->
+        <!-- [class.d-none]="returnValueWithNgmodel != item.category" -->
         
     </div>
 

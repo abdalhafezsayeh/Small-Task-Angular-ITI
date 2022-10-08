@@ -1,0 +1,18 @@
+<div class="container">
+
+    <!-- Start Select Option -->
+    <div class="mb-5 w-25">
+        <label for="" class="form-label">Chosse The Proudects</label>
+        <select class="form-select form-select-lg" [(ngModel)]="returnValueWithNgmodelToChild">
+            <option *ngFor="let cat of category" [value]="cat.id">{{cat.name}}</option>
+        </select>
+    </div>
+
+    <!-- Start Products Child -->
+    <app-product [sendValueFromParent]="returnValueWithNgmodelToChild"></app-product>
+
+
+    <!-- Start Table Product -->
+    <!-- <app-table-product></app-table-product> -->
+
+</div>
