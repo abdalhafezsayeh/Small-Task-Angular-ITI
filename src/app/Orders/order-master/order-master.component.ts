@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Icategory } from 'src/app/modals/Icategory';
+import { SentShopping } from 'src/app/modals/sentShopping';
 
 @Component({
   selector: 'app-order-master',
@@ -10,10 +11,14 @@ export class OrderMasterComponent implements OnInit {
 
   category:Icategory[];
   returnValueWithNgmodelToChild:number = 0;
+
+  recevrTotalPriceFromChild:number=0
+
+  toat:SentShopping[] = []
   constructor() { 
 
     this.category = [
-      { id: 0, name: "All Product"},  // What
+      { id: 0, name: "All Product"}, 
       { id: 1, name: 'Mobile' },
       { id: 2, name: 'Laptops' },
       { id: 3, name: 'Display Screen' }
@@ -25,5 +30,28 @@ export class OrderMasterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  totalPriceFromChild(totalPrice:number) {
+
+    this.recevrTotalPriceFromChild = totalPrice
+
+  }
+
+
+  test(all:any) {
+
+    this.toat.push(all)
+   
+  }
+
+
+  deleteFromMyShopping(index: number) {
+
+    
+    if (index !== -1) {
+        this.toat.splice(index, 1);
+  }
+}
+
 
 }

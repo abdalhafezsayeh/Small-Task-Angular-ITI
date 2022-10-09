@@ -13,7 +13,7 @@
     <!-- Start Section Show Products -->
     <div class="row mt-5">
         <!-- Use Element Conatiner Because It Does Not Appear In Dom -->
-        <ng-container *ngFor="let item of cloneListProduct; let i = index">
+        <ng-container *ngFor="let item of MsgWithServices; let i = index">
         
             <!-- <div class="col-3 mb-4"  *ngIf="showw == item.category"> -->
                 <div class="col-3 mb-4">
@@ -33,7 +33,10 @@
 
                             <span class="d-lg-block pt-2 p-1">Price The Proudect : <strong>${{item.Price}}</strong></span>
                             <span class="d-block pb-2">Proudect Number : <strong>{{i + 1}}</strong></span>
-                            <button type="button" class="btn btn-primary" (click)="dec(item)">buy now</button>
+                            <button type="button" class="btn btn-primary" [disabled]="item.Quantity == 0" 
+                            (click)="dec(item)" 
+                            (click)="totalPrice(item)"
+                            (click)="addTableAfterShopping(item.id,item.name,item.Price,item.image)">buy now</button>
                         </div>
                     </div>
                 </div>
@@ -43,7 +46,7 @@
         </ng-container>
 
         <!-- [class.d-none]="returnValueWithNgmodel != item.category" -->
-        
+        <!-- <div>{{totalPriceAfterShop}}</div> -->
     </div>
 
 </div>

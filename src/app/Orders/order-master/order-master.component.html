@@ -8,11 +8,53 @@
         </select>
     </div>
 
+    <hr>
+    <hr>
+
     <!-- Start Products Child -->
-    <app-product [sendValueFromParent]="returnValueWithNgmodelToChild"></app-product>
+    <app-product
+     [sendValueFromParent]="returnValueWithNgmodelToChild" 
+     (totalPriceChange)="totalPriceFromChild($event)" 
+     (afterShopping)="test($event)"></app-product>
 
+   
+    <hr>
+    <p class="bg-info p-2 text-center text-dark">Products After Shopping</p>
+    <hr>
 
-    <!-- Start Table Product -->
-    <!-- <app-table-product></app-table-product> -->
+    <!-- Start Table Show After Shopping -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" class="bg-danger">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Remove The Proudect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let one of toat; let i  = index">
+                        <td scope="row" class="bg-danger">{{i +1}}</td>
+                        <td>{{one._name | uppercase}}</td>
+                        <td>{{one._price | currency}}</td>
+                        <td>
+                            <img style="width:100px ;" src="{{one._image}}" alt="">
+                        </td>
+                        <td class="w-25">
+                            <button class="btn btn-danger" (click)="deleteFromMyShopping(i)">Remove</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+ <!-- Start Total Price -->
+ <div class="bg-dark text-light p-2 mb-4">Total Price : {{recevrTotalPriceFromChild | currency}}</div>
+
 
 </div>
