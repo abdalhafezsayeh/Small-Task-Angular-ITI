@@ -10,6 +10,7 @@ import { SentShopping } from 'src/app/modals/sentShopping';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit, OnChanges {
+[x: string]: any;
 
   // InterFace Category
   // category: Icategory[];
@@ -85,4 +86,15 @@ export class ProductComponent implements OnInit, OnChanges {
 
 
   }
+
+
+
+  // Function Add To Card 
+  addToCard(products:IProducts) {
+
+    console.log(products)
+
+  }
+
+
 } // End The Class 

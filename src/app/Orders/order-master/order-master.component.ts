@@ -17,6 +17,18 @@ export class OrderMasterComponent implements OnInit {
   toat:SentShopping[] = []
   constructor() { 
 
+  
+    if (window.localStorage.getItem("admin") === null) {
+
+      // let checked = JSON.parse(window.localStorage.getItem('admin'));
+      console.log("not")
+    
+    } else {
+
+      console.log("done")
+    }
+
+
     this.category = [
       { id: 0, name: "All Product"}, 
       { id: 1, name: 'Mobile' },
@@ -52,6 +64,9 @@ export class OrderMasterComponent implements OnInit {
         this.toat.splice(index, 1);
   }
 }
+
+// checked = JSON.parse(localStorage.getItem('admin')!);
+
 
 
 }
