@@ -11,14 +11,40 @@ export class NavbarComponent implements OnInit {
 [x: string]: any;
 isloged:boolean
 checkAdmin:boolean = false
+numberCard:any
   constructor(private checkAboutAccount:LoginService , private ro:Router) {
+
     this.isloged = this.checkAboutAccount.isLogged()
    }
 
   ngOnInit(): void {
+
+
+    // (() => {
+
+    //   if(localStorage.getItem('shopping')) {
+    
+    //     this.numberCard = JSON.parse(localStorage.getItem('shopping') || '')
+
+    //     console.log(this.numberCard)
+    //   }
+    
+    // })();
+
+
+
+
     this.checkAboutAccount.getUp().subscribe(status => {
 
       this.isloged = status
+
+    })
+
+
+    // Test
+    this.checkAboutAccount.getNumberCard().subscribe(st => {
+
+      this.numberCard = st
 
     })
   }
@@ -43,6 +69,9 @@ checkAdmin:boolean = false
     console.log(this.checkAdmin)
 
   }
+
+
+
 
 
 

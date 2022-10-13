@@ -19,17 +19,17 @@ export class FirstAuthGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log(state)
+      // console.log(state)
       if(this.serv.isLogged())
       {
-        console.log("true")
+        // console.log("true")
        
         return true
      
 
       } else {
 
-        console.log("false")
+        // console.log("false")
          this._route.navigate(["/login",state.url])
         alert("no Account")
         return false;

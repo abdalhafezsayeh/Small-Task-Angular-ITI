@@ -16,10 +16,12 @@ import { OrderMasterComponent } from './Orders/order-master/order-master.compone
 import { TableProductComponent } from './Orders/table-product/table-product.component';
 import { LoginUpComponent } from './login-up/login-up.component';
 import { LoginComponent } from './login/login.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LogoutComponent } from './logout/logout.component';
 import { PtestComponent } from './ptest/ptest.component';
+import { LoaderInterceptor } from './services/loader.interceptor';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { PtestComponent } from './ptest/ptest.component';
     LoginUpComponent,
     LoginComponent,
     LogoutComponent,
-    PtestComponent
+    PtestComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,14 @@ import { PtestComponent } from './ptest/ptest.component';
  
 
   ],
-  providers: [],
+  providers: [
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

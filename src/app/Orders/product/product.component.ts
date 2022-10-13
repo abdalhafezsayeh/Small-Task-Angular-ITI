@@ -3,6 +3,7 @@ import { IProducts } from '../../modals/Iproducts';
 import { Icategory } from '../../modals/Icategory';
 import { StaticProductsService } from 'src/app/services/staticProducts.service';
 import { SentShopping } from 'src/app/modals/sentShopping';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -26,6 +27,7 @@ export class ProductComponent implements OnInit, OnChanges {
   totalPriceAfterShop:number=0
   MsgWithServices:IProducts[] =[]
 
+   allCard:object[]=[];
   // Create Object By Default With Services 
   constructor(private staticServices:StaticProductsService) { 
     this.totalPriceChange= new EventEmitter<number>()
@@ -92,7 +94,19 @@ export class ProductComponent implements OnInit, OnChanges {
   // Function Add To Card 
   addToCard(products:IProducts) {
 
-    console.log(products)
+    // console.log(typeof products);
+  
+   this.allCard.push(products)
+
+  //  console.log(this.allCard)
+
+    // Check About Account And Then Set Item With Button Add To card To localStorage
+    if(localStorage.getItem("token")) {
+
+      localStorage.setItem("shopping", JSON.stringify(this.allCard))
+
+    } 
+  
 
   }
 

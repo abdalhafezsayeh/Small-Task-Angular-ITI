@@ -32,7 +32,7 @@ getAllProduct():IProducts[] {
  return  this.listOfProduct
 }
 
-// Start Function Get Category 
+// Start Function Get Category Type Array 
 getCategoryID(cId:number):IProducts[] {
  
   if (cId==0) {
